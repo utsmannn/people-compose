@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Peoples</string>
+
+    <string name="desc_nav_to_detail">Open detail</string>
 </resources>
