@@ -15,6 +15,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.utsman.peoples.R
 import com.utsman.peoples.data.datasources.PeopleDataSources
@@ -34,7 +35,8 @@ fun HomeScreen() {
     LayoutAppBar(title = context.getString(R.string.app_name)) {
         LazyColumn(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                /*.testTag("main-list")*/,
             contentPadding = PaddingValues(6.dp)
         ) {
             items(peoples) { people ->

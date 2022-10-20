@@ -21,9 +21,9 @@ class PeopleTest {
     val composeRoleTest = createComposeRule()
 
     private val mainList = "main-list"
-    private val contactNameTag = "Melva Nixon"
-    private val otherContactNameTag = "Burke Barlow"
-    private val otherContactNameIndex = 20
+    private val peopleNameTag = "Melva Nixon"
+    private val otherPeopleNameTag = "Burke Barlow"
+    private val otherPeopleNameIndex = 20
 
     @Before
     fun setup() {
@@ -34,43 +34,43 @@ class PeopleTest {
                 }
             }
         }
-
-        composeRoleTest.onRoot().printToLog("KEREN")
+        composeRoleTest.onRoot()
+            .printToLog("KEREN")
     }
 
     @Test
-    fun showContactList() {
+    fun showPeopleList() {
         composeRoleTest.run {
             onRoot().printToLog("TEST-1")
-            onNodeWithTag(contactNameTag).assertIsDisplayed()
+            onNodeWithTag(mainList).assertIsDisplayed()
         }
     }
 
     @Test
-    fun navigateToContact() {
+    fun navigateToPeople() {
         composeRoleTest.run {
             onRoot().printToLog("TEST-2")
-            onNodeWithTag(contactNameTag).assertIsDisplayed()
-            onNodeWithTag(contactNameTag).performClick()
+            onNodeWithTag(peopleNameTag).assertIsDisplayed()
+            onNodeWithTag(peopleNameTag).performClick()
 
-            val navIconTag = "nav-icon-$contactNameTag"
+            val navIconTag = "nav-icon-$peopleNameTag"
             onNodeWithTag(navIconTag).assertIsDisplayed()
         }
     }
 
     @Test
-    fun navigateContactToBack() {
+    fun navigatePeopleToBack() {
         composeRoleTest.run {
             onRoot().printToLog("TEST-3")
-            onNodeWithTag(contactNameTag).performClick()
+            onNodeWithTag(peopleNameTag).performClick()
 
-            val navIconTag = "nav-icon-$contactNameTag"
+            val navIconTag = "nav-icon-$peopleNameTag"
             onNodeWithTag(navIconTag).assertIsDisplayed()
             onNodeWithTag(navIconTag).performClick()
 
             onNodeWithTag(mainList).assertIsDisplayed()
-            onNodeWithTag(mainList).performScrollToIndex(otherContactNameIndex -1)
-            onNodeWithTag(otherContactNameTag).assertIsDisplayed()
+            onNodeWithTag(mainList).performScrollToIndex(otherPeopleNameIndex -1)
+            onNodeWithTag(otherPeopleNameTag).assertIsDisplayed()
         }
     }
 
@@ -78,8 +78,8 @@ class PeopleTest {
     fun checkIconProfileInDetail() {
         composeRoleTest.run {
             onRoot(useUnmergedTree = false).printToLog("TEST-4")
-            onNodeWithTag(contactNameTag).performClick()
-            onNodeWithTag("icon-$contactNameTag").assertIsDisplayed()
+            onNodeWithTag(peopleNameTag).performClick()
+            onNodeWithTag("icon-$peopleNameTag").assertIsDisplayed()
         }
     }
 }
